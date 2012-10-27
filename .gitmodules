@@ -1,0 +1,6 @@
+[submodule "modules/singleton"]
+	path = modules/singleton
+	url = git://github.com/vbouchaud/singleton.git
+[submodule "modules/parse"]
+	path = modules/parse
+	url = git://github.com/vbouchaud/cpp-optparse.git
