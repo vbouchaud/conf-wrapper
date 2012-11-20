@@ -18,7 +18,7 @@
 
 #include "tSingleton.hpp"
 #include "OptionParser.hpp"
-#include "Logger.hpp"
+//#include "Logger.hpp"
 
 #include <boost/thread/mutex.hpp>
 
@@ -36,10 +36,10 @@ namespace OptionKey {
 class	Conf: public utility::singlt<Conf> {
 private:
   boost::mutex			_mutex;
-  optparse::Values		_values;	/**< values getted by _parser */
-  optparse::OptionParser	_parser;	/**< parser wrote with lib boost */
-  std::list<std::string>	_args;		/**< args (string) getted by binary */
-  boost::property_tree::ptree	_pt;		/**< ptree from lib boost */
+  optparse::Values		_values;  /**< values getted by _parser */
+  optparse::OptionParser	_parser;  /**< parser wrote with lib boost */
+  std::list<std::string>	_args;	  /**< args (string) getted by binary */
+  boost::property_tree::ptree	_pt;	  /**< ptree from lib boost */
 
   const short			_maxReplicata;
 
@@ -67,7 +67,8 @@ public:
   short	getMaxReplicata() const;
 
   /** 
-   * initCommandParser Will get binary's args and convert it into options. (overwriting options in file.conf)
+   * initCommandParser Will get binary's args and convert it into
+   * options. (overwriting options in file.conf)
    * 
    * @param ac nbr of arg getted by binary
    * @param av args getted by binary
@@ -84,9 +85,11 @@ public:
   /** 
    * Conf::get() return option asked.
    * 
-   * @param key a string formated as "section.key". (list of available token is at the top of this file.)
+   * @param key a string formated as "section.key". (list of available
+   * token is at the top of this file.)
    * 
-   * @return the value in args else in ptree if it's not in args or default value where "section.key"
+   * @return the value in args else in ptree if it's not in args or
+   * default value where "section.key"
    */
   template<typename T>
   T  get(const std::string &key) const {
@@ -101,13 +104,17 @@ public:
       return (boost::lexical_cast<T>(_values[key]));
     }
     catch(bad_lexical_cast &) {
-      Logger::Instance().writeError("Conf", "Bad conversion with " + key + ".");
-      return (boost::lexical_cast<T>("")); //FIXME : what to do in case of error?
+      //Logger::Instance().writeError("Conf", "Bad conversion with " +
+      //key + "."); // Removing until Logger handle correctly syslog.
+      return (boost::lexical_cast<T>("")); //FIXME : what to do in
+                                           //case of error?
     }
   }
 
   /** 
-   * Conf::put() allow to edit ptree. Only the configuration file can be overwrited. If a key was previously in args, it'll be erased and getted from ptree for each Conf::get(key).
+   * Conf::put() allow to edit ptree. Only the configuration file can
+   * be overwrited. If a key was previously in args, it'll be erased
+   * and getted from ptree for each Conf::get(key). 
    * threadSafe
    *
    * @param key Key to put in ptree.
