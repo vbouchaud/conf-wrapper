@@ -24,23 +24,10 @@
 
 //! List of all available key for Conf::put() and Conf::get() function.
 namespace OptionKey {
-  static const std::string	dhtNode			= "dhtnode";
-  static const std::string	confFolder		= "configurationFolder";
   static const std::string	confFile		= "fileconf";
   static const std::string	generalVerbosity	= "general.verbosity";
   static const std::string	generalStdLog		= "general.standard-log";
   static const std::string	generalErrLog		= "general.error-log";
-  static const std::string	networkIp		= "network.ip";
-  static const std::string	networkPort		= "network.port";
-  static const std::string	networkMinPort		= "network.min-listen-port";
-  static const std::string	networkMaxPort		= "network.max-listen-port";
-  static const std::string	networkMaxDl		= "network.max-download";
-  static const std::string	networkMaxUp		= "network.max-upload";
-  static const std::string	folderTheir		= "folder.their";
-  static const std::string	folderMine		= "folder.mine";
-  static const std::string	folderTheirSize		= "folder.their-size";
-  static const std::string	accountPbKey		= "account.public-key";
-  static const std::string	accountPvKey		= "account.private-key";
 }
 
 /**
@@ -80,7 +67,7 @@ public:
   short	getMaxReplicata() const;
 
   /** 
-   * initCommandParser Will get binary's args and convert it into options. (overwriting options in bibimbap.conf)
+   * initCommandParser Will get binary's args and convert it into options. (overwriting options in file.conf)
    * 
    * @param ac nbr of arg getted by binary
    * @param av args getted by binary
@@ -93,12 +80,6 @@ public:
    * @return false if there is an error else true
    */
   void	initFromConf();
-
-  /** 
-   * Create Bibimbap folders if they don't exists
-   * ThreadSafe
-   */
-  void	initWorkspace();
 
   /** 
    * Conf::get() return option asked.
