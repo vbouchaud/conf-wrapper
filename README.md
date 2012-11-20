@@ -12,6 +12,10 @@ You might init conf-wrapper as following:
 int     main(int ac, char **av) {
 Conf::Instance().initCommandParser(ac, av);
 Conf::Instance().initFromConf();
+
+//your code
+
+return (0);
 }
 ```
 You might then use the following functions. Please, take a look at Conf.hpp in order to understand how it works. 
