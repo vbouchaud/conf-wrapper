@@ -15,7 +15,7 @@
 
 #include <boost/thread/mutex.hpp>
 
-Conf::Conf(): _maxReplicata(5) {
+Conf::Conf() {
 }
 
 Conf::~Conf() {
@@ -24,11 +24,6 @@ Conf::~Conf() {
 void
 Conf::initFromConf() {
   load(_values["fileconf"]);
-}
-
-short
-Conf::getMaxReplicata() const {
-  return _maxReplicata;
 }
 
 bool

@@ -41,8 +41,6 @@ private:
   std::list<std::string>	_args;	  /**< args (string) getted by binary */
   boost::property_tree::ptree	_pt;	  /**< ptree from lib boost */
 
-  const short			_maxReplicata;
-
   /** 
    * This function will load a ptree from the file given in parameter.
    * 
@@ -58,14 +56,6 @@ protected:
   ~Conf();
 
 public:
-  /** 
-   * get max_replica allowed per file
-   * 
-   * 
-   * @return max_replica allowed
-   */
-  short	getMaxReplicata() const;
-
   /** 
    * initCommandParser Will get binary's args and convert it into
    * options. (overwriting options in file.conf)
