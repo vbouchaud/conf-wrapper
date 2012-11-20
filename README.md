@@ -3,7 +3,7 @@ conf-wrapper
 
 ## Description
 Yet another conf wrapper.
-This conf wrapper uses a fork (vbouchaud/cpp-optparse) of cpp-optparse by Johannes Weißl (weisslj/cpp-optparse)
+This conf wrapper uses a fork: vbouchaud/cpp-optparse of cpp-optparse by Johannes Weißl: weisslj/cpp-optparse
 
 ## Usage
 You can use conf-wrapper editing Conf.hpp and Conf.cpp to add what option you want. Just follow the examples.
@@ -12,6 +12,10 @@ You might init conf-wrapper as following:
 int     main(int ac, char **av) {
 Conf::Instance().initCommandParser(ac, av);
 Conf::Instance().initFromConf();
+
+//your code
+
+return (0);
 }
 ```
 You might then use the following functions. Please, take a look at Conf.hpp in order to understand how it works. 
